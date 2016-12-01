@@ -1,0 +1,36 @@
+﻿
+<h1>Search Movies</h1>
+<div ng-controller="MovieSearchController">
+    <div class="">
+        <input type="text" class="form-control input-lg input" ng-model="searchText" placeholder="Search for...">
+    </div>
+    <div class="results list-group">
+        <div ng-repeat="result in results.Search" class="list-group-item">
+            <div class="media" style="overflow: visible">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="{{result.Poster}}" style="height: 100px" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{result.Title}}</h4>
+                    <p>Year: {{result.Year}}</p>
+                    <p>IMDB ID: {{result.imdbID}}</p>
+                </div>
+                <div class="media-right media-middle">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Add To List
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="list in movieLists">
+                                <a ng-click="addToList(list, result)" href="#">{{list.Name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
